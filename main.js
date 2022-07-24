@@ -34,21 +34,23 @@
      }
  } 
 function calcMoney(){
-    var resultMoney= "";
+     var resultMoney= "";
     var infoResult = ""
     var nameInput = document.getElementById("name").value;
     var amountElectric = document.getElementById("electricCount").value*1;
+    var format = new Intl.NumberFormat("vn-VN")
     if(amountElectric>= 0 && amountElectric <=50){
-        resultMoney = `${amountElectric * 500} + vnd`
+        resultMoney = `${amountElectric * 500}`
     }else if(amountElectric >= 51 && amountElectric <=100){
-        resultMoney = `${amountElectric *650} + vnd`
+        resultMoney = `${amountElectric *650}`
     }else if(amountElectric >= 101 && amountElectric <= 200 ){
-        resultMoney = `${amountElectric *850} + vnd`
+        resultMoney = `${amountElectric *850}`
     }else if(amountElectric >= 201 && amountElectric <=350){
-        resultMoney = `${amountElectric *1100} + vnd`
+        resultMoney = `${amountElectric *1100}`
     }else{
-        resultMoney = `${amountElectric * 1300}  vnd`
+        resultMoney = `${amountElectric * 1300}`
     }
-    infoResult = `Thong tin đầy đủ là : ${nameInput} tổng số điện là : ${resultMoney}`
+    resultMoney = format.format(resultMoney)
+    infoResult = `Thong tin đầy đủ là : ${nameInput} </br> số tiền phải trả là : ${resultMoney}`
     document.getElementById("totalElectric").innerHTML = infoResult;
 }
